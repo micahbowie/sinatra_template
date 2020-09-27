@@ -11,8 +11,6 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-# gem 'restart', '~> 2.0'
-# gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 group :test do
   gem 'rspec'

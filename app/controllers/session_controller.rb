@@ -5,7 +5,7 @@ class SessionController < ApplicationController
   end
 
 
-  post '/sessions' do
+  post '/session' do
     login(params[:username])
     redirect '/notes'
   end

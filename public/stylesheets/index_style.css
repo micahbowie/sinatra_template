@@ -46,3 +46,8 @@ h1 {
 body {
   background-color: lightblue;
 }
+
+textarea {
+  width: 410px;
+  height: 180px;
+}
