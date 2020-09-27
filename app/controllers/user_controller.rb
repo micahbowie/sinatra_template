@@ -6,7 +6,7 @@ get '/register' do
 
   post '/users' do
     @user = User.new
-    @user.email = params[:email]
+    @user.username = params[:username]
     @user.password = params[:password]
 
     if @user.save

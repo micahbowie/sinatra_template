@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 
-  get '/' do
+  get '/login' do
    erb :index
   end
 
@@ -12,7 +12,7 @@ class SessionController < ApplicationController
 
   get '/logout' do
    logout!
-   redirect "/"
+   redirect "/login"
   end
 
 
