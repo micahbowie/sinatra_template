@@ -12,7 +12,7 @@ get '/register' do
     if @user.save
       redirect "/login"
     else
-      erb :'users/new.html'
+      erb :register
     end
   end
 
