@@ -9,19 +9,16 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "jot_it_down"
   end
 
-  # get "/" do
-  #   erb :welcome
-  # end
-
   helpers do
 
     def logged_in?
       !!session[:username]
     end
 
-    def login(username)
+    def login(username, password)
 
-      if user = User.find_by(:username => username)
+      user = User.find_by(:username => username)
+      if user && user.authenticate(password)
         session[:username] = user.username
       else
         redirect '/'
