@@ -1,7 +1,9 @@
 class NoteController < ApplicationController
 
   get '/notes' do
-    "all notes #{session[:username]}"
+    user = User.find_by(:username => session[:username]).id
+    notes = Note.find_by(:user_id => user)
+    "all notes #{notes.title}"
   end
 
   get '/notes/new' do
