@@ -7,11 +7,12 @@
  <body>
  <ul>
   <% user = User.find_by(:username => session[:username]) %>
-  <% notes = user.notes.pluck(:title) %>
-  <% notes.each do |title| %>
-    <li><%= title %></li>
+  <% notes = user.notes.pluck(:id, :title) %>
+  <% notes.each do |id, title| %>
+    <!-- <li><%= title %></li> -->
+    <li><a href="notes/<%= id%>"><%=title%></a></li>
     <%end%>
  </ul>
- <a href="http://127.0.0.1:9393/notes/new">link text</a>
+ <a href="notes/new">New Note</a>
 </div>
 </html>
