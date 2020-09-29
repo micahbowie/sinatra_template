@@ -1,9 +1,6 @@
 class NoteController < ApplicationController
 
   get '/notes' do
-    # user = User.find_by(:username => session[:username]).id
-    # notes = Note.find_by(:user_id => user)
-    # "all notes #{notes.title}"
     erb :notes
   end
 
