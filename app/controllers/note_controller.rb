@@ -23,7 +23,7 @@ class NoteController < ApplicationController
     @note.user_id = User.find_by(:username => session[:username]).id
 
     if @note.save
-      redirect "/notes"
+      redirect "/notes/#{@note.id}"
     else
       "note can not be saved"
     end
