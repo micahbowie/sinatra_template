@@ -12,8 +12,17 @@ class NoteController < ApplicationController
     end
   end
 
-  post '/savepost' do
-      note = params[:note]
+  post '/savenote' do
+    @note = Note.new
+    @note.title = params[:title]
+    @note.content = params[:content]
+    @note.user_id = User.find_by(:username => session[:username]).id
+
+    if @note.save
+      redirect "/notes"
+    else
+      "note can not be saved"
+    end
   end
 
 get '/notes/:id/edit' do

@@ -7,7 +7,8 @@ class SessionController < ApplicationController
 
   post '/session' do
     login(params[:username], params[:password])
-    redirect '/notes'
+    redirect "/notes"
+    # erb :notes
   end
 
   get '/logout' do
