@@ -1,7 +1,7 @@
 class NoteController < ApplicationController
 
   get '/notes' do
-    erb :notes
+    erb :all_notes
   end
 
   get '/notes/new' do
@@ -29,7 +29,15 @@ get '/notes/:id/edit' do
    if !logged_in?
      redirect "/login"
    else
-     "edit note"
+     erb :note
+   end
+end
+
+get '/notes/:id' do
+   if !logged_in?
+     redirect "/login"
+   else
+     erb :note
    end
 end
 

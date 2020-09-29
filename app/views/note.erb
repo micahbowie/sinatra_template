@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Steam Press Index</title>
+</head>
+<div id="page-wrap">
+ <body>
+  <% user = User.find_by(:username => session[:username]) %>
+  <% all_notes = user.notes %>
+    <h1><%= all_notes.where(:id => params[:id]).pluck(:title)%></h1>
+     <p><%=all_notes.where(:id => params[:id]).pluck(:content)%></p>
+</div>
+</html>
