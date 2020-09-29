@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Steam Press Index</title>
+</head>
+<div id="page-wrap">
+ <body>
+ <ul>
+  <% user = User.find_by(:username => session[:username]) %>
+  <% notes = user.notes(:title) %>
+  <% notes.each do |title| %>
+    <li><%= title %></li>
+    <%end%>
+ </ul>
+
+   <h1>micahbowie</h1>
+   <h3>Today I finished all my labs. I think I did an ok job but, I can do better!</h3>
+</div>
+</html>
