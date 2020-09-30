@@ -11,6 +11,8 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'validation', '~> 0.1.0'
+gem 'rack-flash3'
 
 group :test do
   gem 'rspec'

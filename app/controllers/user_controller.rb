@@ -1,6 +1,4 @@
 class UserController < ApplicationController
-  # validates :username,      :presence => true, :uniqueness => true
-  # validates :password_digest,      :presence => true
 
 get '/register' do
     erb :register
@@ -14,7 +12,7 @@ get '/register' do
     if @user.save
       redirect "/login"
     else
-      erb :register
+      redirect "/register"
     end
   end
 

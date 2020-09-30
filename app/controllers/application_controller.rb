@@ -1,6 +1,4 @@
 require './config/environment'
-# use Rack::Flash
-# use Rack::MethodOverride
 
 class ApplicationController < Sinatra::Base
 
@@ -33,6 +31,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def logout!
+
       session.clear
     end
   end
