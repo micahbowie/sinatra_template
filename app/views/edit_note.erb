@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>New Note</title>
+</head>
+<div id="page-wrap">
+ <body>
+  <h1>Note it...</h1>
+  <%user = User.find_by(:username => session[:username])
+  note = user.notes
+  title = user.notes.where(:id => params[:id]).pluck(:title).join(', ')
+  content = user.notes.where(:id => params[:id]).pluck(:content).join(', ')%>
+   <form action="/savenote" method="POST">
+     <input type="text" name="title" value="<%= title%>">
+     <textarea id="newnote" name="content"rows="10" cols="65" palceholder="<%= content %>"></textarea>
+   <input id="newnote" type="submit">
+</form>
+</body>
+</div>
+</html>

@@ -8,3 +8,4 @@ run ApplicationController
 use NoteController
 use SessionController
 use UserController
+use Rack::MethodOverride

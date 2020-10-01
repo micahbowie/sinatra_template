@@ -33,7 +33,7 @@ get '/notes/:id/edit' do
    if !logged_in?
      redirect "/login"
    else
-     erb :note
+     erb :edit_note
    end
 end
 
@@ -43,6 +43,13 @@ get '/notes/:id' do
    else
      erb :note
    end
+end
+
+def note
+  user = User.find_by(:username => session[:username])
+  note = user.notes
+  title = user.notes.where(:id => params[:id]).pluck(:title)
+  content = user.notes.where(:id => params[:id]).pluck(:content)
 end
 
 end
