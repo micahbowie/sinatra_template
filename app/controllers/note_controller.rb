@@ -4,7 +4,7 @@ class NoteController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
-    erb :all_notes
+    erb :"notes/all_notes"
    end
   end
 
@@ -12,7 +12,7 @@ class NoteController < ApplicationController
     if !logged_in?
       redirect "/login"
     else
-      erb :new_note
+      erb :"notes/new_note"
     end
   end
 
@@ -29,36 +29,36 @@ class NoteController < ApplicationController
     end
   end
 
-get '/notes/:id/edit' do
-   if !logged_in?
-     redirect "/login"
-   else
-     erb :edit_note
-   end
-end
+  get '/notes/:id/edit' do
+    if !logged_in?
+      redirect "/login"
+    else
+      erb :"notes/edit_note"
+    end
+  end
 
-patch "/notes/:id" do
+  patch "/notes/:id" do
      @note = Note.find_by(id: params[:id])
      @note.title = params[:title]
      @note.content = params[:content]
      @note.user_id = User.find_by(:username => session[:username]).id
      @note.save
      redirect to "/notes/#{ params[:id] }"
-end
+  end
 
-delete "/notes/:id" do
+  get '/notes/:id' do
+    if !logged_in?
+      redirect "/login"
+    else
+      erb :"notes/note"
+    end
+  end
+
+  delete "/notes/:id" do
     note =  Note.find(params[:id])
     note.destroy
     redirect "/notes"
-end
-
-get '/notes/:id' do
-   if !logged_in?
-     redirect "/login"
-   else
-     erb :note
-   end
-end
+  end
 
 
 end

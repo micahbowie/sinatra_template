@@ -1,6 +1,6 @@
 class UserController < ApplicationController
 
-get '/register' do
+  get '/register' do
     erb :register
   end
 
