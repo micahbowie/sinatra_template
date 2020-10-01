@@ -20,6 +20,11 @@
     <textarea id="newnote" name="content"rows="10" cols="65" palceholder="Jot it down.."><%= content %></textarea>
     <input id="newnote" type="submit">
   </form>
+
+  <form action="/notes/<%= id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="DELETE">
+  </form>
   <% end %>
 </body>
 </div>

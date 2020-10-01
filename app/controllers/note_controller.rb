@@ -30,9 +30,6 @@ class NoteController < ApplicationController
   end
 
 get '/notes/:id/edit' do
-  # @user = User.find_by(:username => session[:username])
-  # @all_notes = @user.notes
-  # @note = @all_notes.where(:id => params[:id])
    if !logged_in?
      redirect "/login"
    else
@@ -41,7 +38,6 @@ get '/notes/:id/edit' do
 end
 
 patch "/notes/:id" do
-  # binding.pry
      @note = Note.find_by(id: params[:id])
      @note.title = params[:title]
      @note.content = params[:content]
@@ -50,10 +46,13 @@ patch "/notes/:id" do
      redirect to "/notes/#{ params[:id] }"
 end
 
+delete "/notes/:id" do
+    note =  Note.find(params[:id])
+    note.destroy
+    redirect "/notes"
+end
+
 get '/notes/:id' do
-  # @user = User.find_by(:username => session[:username])
-  # @all_notes = @user.notes
-  # @note = all_notes.where(:id => params[:id]) if @user.id == @note.user_id
    if !logged_in?
      redirect "/login"
    else
