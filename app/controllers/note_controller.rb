@@ -30,11 +30,16 @@ class NoteController < ApplicationController
   end
 
   get '/notes/:id/edit' do
-    if !logged_in?
-      redirect "/login"
+    if authenticate_user? == true
+      if !logged_in?
+        redirect "/login"
+      else
+        erb :"notes/edit_note"
+      end
     else
-      erb :"notes/edit_note"
+      "Something went wrong"
     end
+  end
   end
 
   patch "/notes/:id" do
@@ -47,17 +52,24 @@ class NoteController < ApplicationController
   end
 
   get '/notes/:id' do
-    if !logged_in?
-      redirect "/login"
+    if authenticate_user? == true
+      if !logged_in?
+        redirect "/login"
+      else
+        erb :"notes/note"
+      end
     else
-      erb :"notes/note"
+      "Something went wrong"
     end
   end
 
   delete "/notes/:id" do
-    note =  Note.find(params[:id])
-    note.destroy
-    redirect "/notes"
+    if authenticate_user? == true
+      note =  Note.find(params[:id])
+      note.destroy
+      redirect "/notes"
+    else
+      # go to error erb
   end
 
 

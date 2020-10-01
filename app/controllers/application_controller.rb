@@ -30,4 +30,14 @@ class ApplicationController < Sinatra::Base
     end
     end
 
+    def authenticate_user?
+      @current_user = User.find_by(:username => session[:username]).id
+      @author_of_note = Note.find(params[:id]).user_id
+      if @current_user == @author_of_note
+        true
+      else
+        false
+      end
+    end
+
 end
