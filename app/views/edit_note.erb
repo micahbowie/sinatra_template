@@ -9,12 +9,18 @@
   <%user = User.find_by(:username => session[:username])
   note = user.notes
   title = user.notes.where(:id => params[:id]).pluck(:title).join(', ')
+  id = user.notes.where(:id => params[:id]).pluck(:id).join(', ')
   content = user.notes.where(:id => params[:id]).pluck(:content).join(', ')%>
-   <form action="/savenote" method="POST">
-     <input type="text" name="title" value="<%= title%>">
-     <textarea id="newnote" name="content"rows="10" cols="65" palceholder="<%= content %>"></textarea>
-   <input id="newnote" type="submit">
-</form>
+  <% if title.empty? == true %>
+  <h3> <%= "Uh oh something went wrong... go back to notes" %> </h3>
+  <% else %>
+  <form action="/notes/<%= id %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="text" name="title"  value="<%= title%>">
+    <textarea id="newnote" name="content"rows="10" cols="65" palceholder="Jot it down.."><%= content %></textarea>
+    <input id="newnote" type="submit">
+  </form>
+  <% end %>
 </body>
 </div>
 </html>
