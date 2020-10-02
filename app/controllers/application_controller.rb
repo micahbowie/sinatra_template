@@ -40,25 +40,4 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    get '/notes/:id' do
-      if authenticate_user? == true
-        if !logged_in?
-          redirect "/login"
-        else
-          erb :"notes/note"
-        end
-      else
-        erb :error
-      end
-    end
-
-    patch "/notes/:id" do
-       @note = Note.find_by(id: params[:id])
-       @note.title = params[:title]
-       @note.content = params[:content]
-       @note.user_id = User.find_by(:username => session[:username]).id
-       @note.save
-       redirect to "/notes/#{ params[:id] }"
-    end
-
 end
