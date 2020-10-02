@@ -1,7 +1,7 @@
 class UserController < ApplicationController
 
-  get '/register' do
-    erb :register
+  get '/' do
+    erb :index
   end
 
   post '/users' do
@@ -12,7 +12,7 @@ class UserController < ApplicationController
     if @user.save
       redirect "/login"
     else
-      redirect "/register"
+      redirect "/"
     end
   end
 
