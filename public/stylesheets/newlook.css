@@ -42,10 +42,8 @@ h1 {
   color: #6A6A6A;
 }
 #center {
-  margin: auto;
+  margin: 0;
   width: 100%;
-/*   border: 3px solid green; */
-  padding: 35px 70px 50px 90px;
 }
 
 
@@ -61,6 +59,7 @@ h1 {
 #page-wrap {
   position: relative;
   height: 250px;
+  top: 140px;
   max-width: 405px;
   width: 100%;
   margin:auto;

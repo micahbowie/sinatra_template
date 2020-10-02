@@ -21,11 +21,11 @@
       <% if notes_array.empty? == true %>
       <h3><%= "You have no saved notes. Create a new note!" %></h3>
       <% else %>
-      <% notes.each do |id, title, content| %>
         <ul>
+      <% notes.each do |id, title, content| %>
           <li>
             <h2><%=title%></h2>
-            <a href="notes/<%= id%>">
+            <a href="notes/<%= id%>"
               <p><%=content%>></p>
             </a>
           </li>
