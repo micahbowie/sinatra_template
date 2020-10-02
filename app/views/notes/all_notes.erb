@@ -1,24 +1,31 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Notes</title>
-</head>
-<div id="page-wrap">
- <body>
- <ul>
-  <% user = User.find_by(:username => session[:username]) %>
-  <% notes_array = user.notes %>
-  <% notes = user.notes.pluck(:id, :title) %>
-    <% if notes_array.empty? == true %>
+  <head>
+    <title>Notes</title>
+  </head>
+<div id="center">
+  <div id="all-notes">
+    <body>
+
+      <% user = User.find_by(:username => session[:username]) %>
+      <% notes_array = user.notes %>
+      <% notes = user.notes.pluck(:id, :title, :content) %>
+      <h1><%= "#{user.username}'s Notes" %></h1>
+      <% if notes_array.empty? == true %>
       <h3><%= "You have no saved notes. Create a new note!" %></h3>
-    <% else %>
-    <% notes.each do |id, title| %>
-    <li><a href="notes/<%= id%>"><%=title%></a></li>
-    <%end%>
-    <%end%>
- </ul>
- <form action="notes/new">
-    <input type="submit" value="New Note"/>
-</form>
-</div>
+      <% else %>
+      <% notes.each do |id, title, content| %>
+        <ul>
+          <li>
+            <h2><%=title%></h2>
+            <a href="notes/<%= id%>">
+              <p><%=content%>></p>
+            </a>
+          </li>
+          <%end%>
+          <%end%>
+        </ul>
+      </body>
+    </div>
+  </div>
 </html>

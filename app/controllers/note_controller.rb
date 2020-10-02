@@ -25,7 +25,7 @@ class NoteController < ApplicationController
     if @note.save
       redirect "/notes/#{@note.id}"
     else
-      "note can not be saved"
+      erb :error
     end
   end
 
@@ -37,7 +37,7 @@ class NoteController < ApplicationController
         erb :"notes/edit_note"
       end
     else
-      "Something went wrong"
+      erb :error
     end
   end
   end
@@ -59,7 +59,7 @@ class NoteController < ApplicationController
         erb :"notes/note"
       end
     else
-      "Something went wrong"
+      erb :error
     end
   end
 
@@ -69,7 +69,7 @@ class NoteController < ApplicationController
       note.destroy
       redirect "/notes"
     else
-      # go to error erb
+      erb :error
   end
 
 
