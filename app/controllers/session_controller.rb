@@ -1,4 +1,3 @@
-require 'rack-flash'
 class SessionController < ApplicationController
   use Rack::Flash
 
@@ -15,6 +14,7 @@ class SessionController < ApplicationController
 
   get '/logout' do
     logout!
+    # flash[:logout] = "You have now been logged out!"
     redirect "/login"
   end
 
