@@ -19,7 +19,7 @@
       <% notes = user.notes.pluck(:id, :title, :content) %>
       <h1><%= "#{user.username}'s Notes" %></h1>
       <% if notes_array.empty? == true %>
-      <h3><%= "You have no saved notes. Create a new note!" %></h3>
+      <h3><%= erb :no_message %></h3>
       <% else %>
         <ul>
       <% notes.each do |id, title, content| %>
