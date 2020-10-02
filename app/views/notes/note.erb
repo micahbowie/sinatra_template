@@ -11,12 +11,17 @@
     </ul>
   </div>
 <body>
-<div id="new-note">
-
   <% user = User.find_by(:username => session[:username]) %>
   <% all_notes = user.notes %>
-    <h1><%= all_notes.where(:id => params[:id]).pluck(:title).join(', ')%></h1>
-     <p><%=all_notes.where(:id => params[:id]).pluck(:content).join(', ')%></p>
-</div>
-</<body>
+  <h1><%= all_notes.where(:id => params[:id]).pluck(:title).join(', ')%></h1>
+<div id="new-note">
+      <ul>
+        <li>
+            <a href="/notes/<%= params[:id] %>/edit">
+              <p><%=all_notes.where(:id => params[:id]).pluck(:content).join(', ')%></p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </<body>
 </html>
