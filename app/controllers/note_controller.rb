@@ -1,6 +1,9 @@
 class NoteController < ApplicationController
-use Rack::MethodOverride
+
   get '/notes' do
+    @user = User.find_by(:username => session[:username])
+    @notes_array = @user.notes
+    @notes = @user.notes.pluck(:id, :title, :content)
     if !logged_in?
       redirect "/login"
     else
@@ -71,4 +74,4 @@ use Rack::MethodOverride
       erb :error
     end
   end
-end 
+end
