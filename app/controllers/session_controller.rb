@@ -1,5 +1,4 @@
 class SessionController < ApplicationController
-  use Rack::Flash
 
   get '/login' do
    erb :login
@@ -8,7 +7,7 @@ class SessionController < ApplicationController
 
   post '/session' do
     login(params[:username], params[:password])
-    # flash[:success] = "Welcome back #{params[:username]}!"
+    flash[:success] = "Welcome back #{params[:username]}!"
     redirect "/notes"
   end
 

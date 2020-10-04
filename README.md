@@ -4,8 +4,7 @@ Jot it down is a sleek notes web app.
 
 ## Installation
 
-You can make a repo of the project and use shotgun to run the site on your local server.
-
+You can make a repo of the project and use shotgun to run the site on your local server. Make sure you bundle install before running the program. 
 
 ## Using Jot it down
 

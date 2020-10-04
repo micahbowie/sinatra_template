@@ -24,6 +24,7 @@ class NoteController < ApplicationController
     @note.title = params[:title]
     @note.content = params[:content]
     @note.user_id = User.find_by(:username => session[:username]).id
+    # @user.create or build here
 
     if @note.save
       redirect "/notes/#{@note.id}"
