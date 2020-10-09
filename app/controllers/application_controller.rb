@@ -14,31 +14,34 @@ class ApplicationController < Sinatra::Base
       !!session[:username]
     end
 
-
-    def login(username, password)
-      user = User.find_by(:username => username)
-
-      if user && user.authenticate(password)
-        session[:username] = user.username
-      else
-        redirect '/login'
-      end
-    end
-
-
     def logout!
       session.clear
     end
+
+    def current_user
+      User.find_by(:username => session[:username])
     end
 
-    def authenticate_user?
-      @current_user = User.find_by(:username => session[:username]).id
+    def current_user_notes
+      current_user.notes.pluck(:id, :title, :content)
+    end
+
+    def note_of_user
+      current_user.notes.find(params[:id])
+    end
+
+    def authenticate_user
       @author_of_note = Note.find(params[:id]).user_id
-      if @current_user == @author_of_note
-        true
-      else
-        false
+      if current_user.id != @author_of_note
+        redirect "/error"
       end
     end
 
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect "/login"
+      end
+    end
+
+end
 end

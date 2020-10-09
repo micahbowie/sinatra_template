@@ -17,4 +17,21 @@ class SessionController < ApplicationController
     redirect "/login"
   end
 
+  get '/error' do
+    erb :error
+  end
+
+
+  private
+
+  def login(username, password)
+    user = User.find_by(:username => username)
+
+    if user && user.authenticate(password)
+      session[:username] = user.username
+    else
+      redirect '/login'
+    end
+  end
+
 end
