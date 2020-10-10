@@ -4,12 +4,12 @@
 <title>Note</title>
 </head>
 <body>
-  <h1><%= note_of_user.title%></h1>
+  <h1><%= @note.title%></h1>
 <div id="new-note">
       <ul>
         <li>
             <a href="/notes/<%= params[:id] %>/edit">
-              <p><%=note_of_user.content%></p>
+              <p><%=@note.content%></p>
             </a>
           </li>
         </ul>

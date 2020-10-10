@@ -1,6 +1,7 @@
 class NoteController < ApplicationController
 
   get '/notes' do
+    @current_user_notes = current_user.notes.pluck(:id, :title, :content) 
     redirect_if_not_logged_in
     erb :"notes/all_notes"
   end
@@ -26,12 +27,14 @@ class NoteController < ApplicationController
 
   get '/notes/:id/edit' do
     redirect_if_not_logged_in
+    @note = Note.find(params[:id])
     authenticate_user
     erb :"notes/edit_note"
   end
 
   get '/notes/:id' do
     redirect_if_not_logged_in
+    @note = Note.find(params[:id])
     authenticate_user
     erb :"notes/note"
   end
@@ -46,9 +49,9 @@ class NoteController < ApplicationController
   end
 
   delete "/notes/:id" do
+    @note =  Note.find(params[:id])
     authenticate_user
-    note =  Note.find(params[:id])
-    note.destroy
+    @note.destroy
     redirect "/notes"
   end
 end

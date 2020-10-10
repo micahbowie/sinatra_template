@@ -22,21 +22,6 @@ class ApplicationController < Sinatra::Base
       User.find_by(:username => session[:username])
     end
 
-    def current_user_notes
-      current_user.notes.pluck(:id, :title, :content)
-    end
-
-    def note_of_user
-      current_user.notes.find(params[:id])
-    end
-
-    def authenticate_user
-      @author_of_note = Note.find(params[:id]).user_id
-      if current_user.id != @author_of_note
-        redirect "/error"
-      end
-    end
-
     def redirect_if_not_logged_in
       if !logged_in?
         redirect "/login"

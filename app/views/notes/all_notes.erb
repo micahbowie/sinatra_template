@@ -8,11 +8,11 @@
   <div id="all-notes">
     <body>
       <h1><%= "#{current_user.username}'s Notes" %></h1>
-      <% if current_user_notes.empty? == true %>
+      <% if @current_user_notes.empty? == true %>
       <h3><%= erb :no_message %></h3>
       <% else %>
         <ul>
-      <% current_user_notes.each do |id, title, content| %>
+      <% @current_user_notes.each do |id, title, content| %>
           <li>
             <h2><%=title%></h2>
             <a href="notes/<%= id%>"

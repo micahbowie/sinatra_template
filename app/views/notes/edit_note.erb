@@ -10,14 +10,14 @@
             <li>
               <a>
                 <div id="create">
-                <form action="/notes/<%= note_of_user.id %>" method="post">
+                <form action="/notes/<%= @note.id %>" method="post">
                   <input type="hidden" name="_method" value="PATCH">
-                  <input type="text" name="title"  value="<%= note_of_user.title%>">
-                  <textarea id="newnote" name="content"rows="20" cols="65" palaceholder="Jot it down.."><%= note_of_user.content %></textarea>
+                  <input type="text" name="title"  value="<%= @note.title%>">
+                  <textarea id="newnote" name="content"rows="20" cols="65" palaceholder="Jot it down.."><%= @note.content %></textarea>
                   <input id="new-note-submit" type="submit">
                 </form>
 
-                <form action="/notes/<%= note_of_user.id %>" method="post">
+                <form action="/notes/<%= @note.id %>" method="post">
                   <input type="hidden" name="_method" value="DELETE">
                   <input type="submit" value="DELETE">
                 </form>
