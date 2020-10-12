@@ -28,5 +28,12 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def authenticate_user
+      @author_of_note = Note.find(params[:id]).user_id
+      if current_user.id != @author_of_note
+        redirect "/error"
+      end
+    end
+
 end
 end
