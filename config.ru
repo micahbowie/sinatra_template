@@ -6,6 +6,5 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
-use NoteController
-use SessionController
-use UserController
+# TODO: when you make a controller add it here with the sue method
+# use MyBrandNewController

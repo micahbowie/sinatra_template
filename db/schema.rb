@@ -13,15 +13,4 @@
 
 ActiveRecord::Schema.define(version: 20200927235025) do
 
-  create_table "notes", force: :cascade do |t|
-    t.string  "title"
-    t.string  "content"
-    t.integer "user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-  end
-
 end
